@@ -1,0 +1,32 @@
+2. 	(6,4)
+	(6,3)
+	(6,2)
+	(5,2)
+	(4,2)
+	(4,3)
+	(5,3)
+	(7,4)
+	(7,5)
+	(7,6)
+	(8,6)
+	(9,6)
+
+4.	(6,4)
+	(6,5)
+	(7,4)
+	(6,3)
+	(5,5)
+	(7,5)
+	(5,3)
+	(6,2)
+	(4,5)
+	(5,6)
+	(7,6)
+	(4,3)
+
+The stack algorithm travels west until it can’t then goes south, then east, then north for as long as possible before finding a dead end. It then reverts to the most recent fork in the road and chooses the next line according to the order of importance (west > south > east > north) because the stack model expands on more recent developments first.
+
+The queue algorithm steadily branches out from the starting point to explore the map in reverse order of the stack algorithm (north > east > south > west). This is because the queue template concentrates on each possible maneuver in a certain spot before moving on to others. 
+
+The stack algorithm focuses a certain path and follows it until it can’t while the queue algorithm gradually spreads out across the maze, never following one path for too long.
+	

@@ -1,0 +1,79 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red170\green13\blue145;\red28\green0\blue207;\red38\green71\blue75;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+
+\f0\fs24 \cf0 2. Since the assignment operator has not been overloaded in the URL class, the compiler errors when the find function tries to compare one URL value to another.\
+\
+3(b) A one parameter overload for the listAll() function would not be sufficient since you need two parameters to monitor the path through which you retrieved the menuItems. Without the path parameter, you could not print out all the plain menu items in the correct format with the path preceding them. \
+\
+4(a) The time complexity of the uniqueIntersect() function is N^2 since the for loop will execute N times and the largest time complexity inside the for loop, worse case, is the contains function which executes N times and if true, calls the insert function which executes N times. Thus, N*N*N = N^3.\
+\
+4(b) The time complexity of the uniqueIntersect() function is 5N + N*log(N) which reduces to N*log(N) for values of N greater than 32 since N*log(N) becomes the bigger term. This Big O for N*log(N) is more efficient since [lim (N->infinity)  N*log(N) / N] goes to infinity. \
+\
+5(a) You can use two for loops to count the number of inversions with a Big O of N^2. \
+\
+5(b) You do this\
+\
+\pard\tx529\pardeftab529\pardirnatural
+
+\f1\fs22 \cf2 \CocoaLigature0 void\cf0  merge(\cf2 int\cf0  data[],\cf2 int\cf0  n1, \cf2 int\cf0  n2, \cf2 int\cf0  &count)\
+\{\
+	\cf2 int\cf0  i=\cf3 0\cf0 , j=\cf3 0\cf0 , k=\cf3 0\cf0 ;\
+	\cf2 int\cf0  *temp = \cf2 new\cf0  \cf2 int\cf0 [n1+n2];\
+	\cf2 int\cf0  *sechalf = data + n1;\
+	\
+	\cf2 while\cf0  (i < n1 || j < n2)\
+	\{\
+		\cf2 if\cf0  (i == n1)\
+			temp[k++] = sechalf[j++];\
+		\cf2 else\cf0  \cf2 if\cf0  (j == n2)\
+			temp[k++] = data[i++];\
+		\cf2 else\cf0  \cf2 if\cf0  (data[i] < sechalf[j])\
+			temp[k++] = data[i++];\
+		\cf2 else\cf0 \
+		\{\
+			\cf2 for\cf0 (\cf2 int\cf0  k = i+\cf3 1\cf0 ; k < n1; k++)\
+				\cf2 if\cf0 (data[k] > sechalf[j])\
+					count++;\
+			\
+			\cf2 if\cf0 (data[i] != sechalf[j])\
+				count++;\
+\
+			temp[k++] = sechalf[j++];\
+		\}\
+	\}\
+	\cf2 for\cf0  (i=\cf3 0\cf0 ;i<n1+n2;i++)\
+		data[i] = temp[i];\
+	\cf2 delete\cf0  [] temp;\
+\}\
+\
+\cf2 void\cf0  mergeSort(\cf2 int\cf0  data[], \cf2 int\cf0  n, \cf2 int\cf0  &inv)\
+\{\
+	\cf2 if\cf0 (n == \cf3 1\cf0 )\
+		\cf2 return\cf0 ;\
+	\
+	\cf4 mergeSort\cf0 (data, n/\cf3 2\cf0 , inv);\
+	\cf4 mergeSort\cf0 (data + (n/\cf3 2\cf0 ), n-(n/\cf3 2\cf0 ), inv);\
+	\
+	\cf4 merge\cf0 (data, n/\cf3 2\cf0 , n-n/\cf3 2\cf0 , inv);	\
+\}
+\f0\fs24 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural
+\cf0 \
+6. Pseudocode:\
+\
+	
+\i Define Node structure with value and count variables\
+	For the N values in the array\
+		Insert the value in the array using the algorithm of Big O(log(N))\
+		\
+	Create a new array of size N\
+	Traverse the tree \
+		add the value of the node to the new array (count) number of times
+\i0 \
+\
+This algorithm has Big O complexity of N(log(log(N))) for an array with log(N) distinct values. \
+}
